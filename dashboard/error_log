@@ -1,0 +1,29 @@
+[17-Mar-2021 17:13:18 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 2
+[17-Mar-2021 17:15:24 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 2
+[17-Mar-2021 17:23:30 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 2
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 3
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 6
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 7
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 12
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 13
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_query() expects parameter 1 to be mysqli, bool given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 665
+[17-Mar-2021 17:41:26 America/Boise] PHP Warning:  mysqli_fetch_array() expects parameter 1 to be mysqli_result, null given in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/index.php on line 666
+[17-Mar-2021 17:45:04 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/logout.php on line 2
+[17-Mar-2021 17:45:04 America/Boise] PHP Warning:  session_destroy(): Trying to destroy uninitialized session in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/logout.php on line 3
+[17-Mar-2021 17:45:04 America/Boise] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home4/xtremev4/public_html/voguetrust/new/user/dashboard/logout.php:1) in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/logout.php on line 4
+[17-Mar-2021 18:06:50 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/statement.php on line 2
+[17-Mar-2021 18:10:32 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 2
+[17-Mar-2021 18:18:12 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/statement.php on line 2
+[17-Mar-2021 18:18:35 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/dom.php on line 2
+[17-Mar-2021 18:19:59 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/dom.php on line 2
+[17-Mar-2021 18:20:11 America/Boise] PHP Parse error:  syntax error, unexpected end of file in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/beneficiaries.php on line 904
+[17-Mar-2021 18:20:24 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/loan.php on line 2
+[17-Mar-2021 18:25:49 America/Boise] PHP Warning:  session_start(): Cannot start session when headers already sent in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/dom.php on line 2
+[17-Mar-2021 18:33:27 America/Boise] PHP Warning:  require_once(../admin/dashboard/PHPMailer/PHPMailer.php): failed to open stream: No such file or directory in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 61
+[17-Mar-2021 18:33:27 America/Boise] PHP Fatal error:  require_once(): Failed opening required '../admin/dashboard/PHPMailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 61
+[17-Mar-2021 18:34:54 America/Boise] PHP Warning:  require_once(.../admin/dashboard/PHPMailer/PHPMailer.php): failed to open stream: No such file or directory in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 61
+[17-Mar-2021 18:34:54 America/Boise] PHP Fatal error:  require_once(): Failed opening required '.../admin/dashboard/PHPMailer/PHPMailer.php' (include_path='.:/opt/cpanel/ea-php73/root/usr/share/pear') in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 61
+[17-Mar-2021 18:36:36 America/Boise] PHP Fatal error:  Uncaught Error: Class 'PHPMailer' not found in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php:65
+Stack trace:
+#0 {main}
+  thrown in /home4/xtremev4/public_html/voguetrust/new/user/dashboard/wire.php on line 65
