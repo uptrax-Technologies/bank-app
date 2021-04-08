@@ -80,7 +80,7 @@ if(isset($_SESSION["username"])){
     $transaction_update_query = mysqli_query($connect, $transaction_update_sql);
 
     if($transfer_query && $transaction_update_query) {
-      $_SESSION['transfer'] = [$transaction_id, $description, $Balance, $Balance1, $bef_account, $username];
+      $_SESSION['transfer'] = [$transaction_id, $description, $Balance, $Balance1, $bef_account, $username, $amount, $receiver_email];
       header('Location: confirm_transfer.php');
     }
     else{

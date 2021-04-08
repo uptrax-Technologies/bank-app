@@ -30,6 +30,8 @@ if(isset($_SESSION['transfer'])){
   $reciever_balance = $_SESSION['transfer'][3];
   $reciever_username = $_SESSION['transfer'][4];
   $sender_username = $_SESSION['transfer'][5];
+  $amount = $_SESSION['transfer'][6];
+  $receiver_email = $_SESSION['transfer'][7];
 
   if(isset($_POST['submit'])){
     $otp1 = $_POST['verification_code'];
@@ -69,56 +71,56 @@ if(isset($_SESSION['transfer'])){
           else{
             echo "success";
 
-          //   require_once "../admin/dashboard/PHPMailer/PHPMailer.php";
-          //   require_once "../admin/dashboard//PHPMailer/SMTP.php";
-          //   require_once "../admin/dashboard//PHPMailer/Exception.php";
+            require_once "../admin/dashboard/PHPMailer/PHPMailer.php";
+            require_once "../admin/dashboard//PHPMailer/SMTP.php";
+            require_once "../admin/dashboard//PHPMailer/Exception.php";
             
-          //   $mail = new PHPMailer();
+            $mail = new PHPMailer();
     
-          //   //SMTP Settings
-          //   $mail->isSMTP();
-          //   $mail->Host = "mail.voguetrust.net";
-          //   $mail->SMTPAuth = true;
-          //   $mail->Username = "info@voguetrust.net";
-          //   $mail->Password = 'voguetrustmail';
-          //   $mail->Port = 465; //587
-          //   $mail->SMTPSecure = "ssl"; //tls
+            //SMTP Settings
+            $mail->isSMTP();
+            $mail->Host = "mail.voguetrust.net";
+            $mail->SMTPAuth = true;
+            $mail->Username = "info@voguetrust.net";
+            $mail->Password = 'voguetrustmail';
+            $mail->Port = 465; //587
+            $mail->SMTPSecure = "ssl"; //tls
     
             
-          //   $mail->setFrom('info@voguetrust.net', 'E-Banking');     
-          //   $mail->AddAddress(''.$sender_email.''); 
+            $mail->setFrom('info@voguetrust.net', 'E-Banking');     
+            $mail->AddAddress(''.$email.''); 
             
           
                                                     
-          //   $mail->isHTML(true);
-          //   $mail->Subject = 'SHIPMENT NOTIFICATION AND DETAILS';     
-          //   $mail->Body = 'you have been debited with the $ '.$amount.'<br>
-          //                   available balance: '.$Balance.'';
+            $mail->isHTML(true);
+            $mail->Subject = 'SHIPMENT NOTIFICATION AND DETAILS';     
+            $mail->Body = 'you have been debited with the $ '.$amount.'<br>
+                            available balance: '.$sender_balance.'';
               
-          //   if ($mail->send()) {
-          //       // echo "<script>alert('mail sent success')</script>";
+            if ($mail->send()) {
+                echo "<script>alert('mail sent success')</script>";
             
-          //   } else {
-          //       echo "<script>alert('failed')</script>";
-          //     echo  $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
-          //   }
+            } else {
+                echo "<script>alert('failed')</script>";
+              echo  $response = "Something is wrong: <br><br>" . $mail->ErrorInfo;
+            }
               
-          //   echo "<script>alert('transfer successful')</script>";
+            echo "<script>alert('transfer successful')</script>";
 
-          //   $mail->setFrom('info@voguetrust.net', 'E-Banking');     
-          //   $mail->AddAddress(''.$receiver_email.'');   
+            $mail->setFrom('info@voguetrust.net', 'E-Banking');     
+            $mail->AddAddress(''.$receiver_email.'');   
         
-          //   $mail->addAttachment('../admin/dashboard/upload/'.$package_image.'');
+            $mail->addAttachment('../admin/dashboard/upload/'.$image.'');
                                                     
-          //   $mail->isHTML(true);
-          //   $mail->Subject = 'SHIPMENT NOTIFICATION AND DETAILS';     
-          //   $mail->Body = 'you have been credit alert with the $ '.$amount.' <br>
-          //              avalable balance: '.$Balance1.'';
+            $mail->isHTML(true);
+            $mail->Subject = 'SHIPMENT NOTIFICATION AND DETAILS';     
+            $mail->Body = 'you have been credit alert with the $ '.$amount.' <br>
+                       avalable balance: '.$reciever_balance.'';
         
-          // if ($mail->send()) {
-          //     echo "<script>alert('mail sent success')</script>";
+          if ($mail->send()) {
+              echo "<script>alert('mail sent success')</script>";
           
-          // } 
+          } 
           echo "<script>alert('transfer successful')</script>";
           }
         }

@@ -665,14 +665,14 @@ if(isset($_SESSION["username"])){
 			<!-- /.box-body -->
 		  </div>
 		  <!-- /.box -->
-          <div class="box box-solid bg-black">
+          <!-- <div class="box box-solid bg-black">
 			<div class="box-header with-border">
 			  <h3 class="box-title">Social media</h3>
-			</div>
+			</div> -->
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
-				<div class="col-12">
+				<!-- <div class="col-12">
 					<div class="form-group row">
 					  <label class="col-sm-2 col-form-label">Facebook</label>
 					  <div class="col-sm-10">
@@ -696,12 +696,12 @@ if(isset($_SESSION["username"])){
 					  <div class="col-sm-10">
 						<input class="form-control" type="text" placeholder="linkedin id">
 					  </div>
-					</div>
-					<div class="form-group row">
+					</div> -->
+					<!-- <div class="form-group row">
 					  <label class="col-sm-2 col-form-label"></label>
 					  <div class="col-sm-10">
 						<button type="submit" class="btn btn-yellow">Submit</button>
-					  </div>
+					  </div> -->
           <?php } ?>
 					</div>
 				</div>
