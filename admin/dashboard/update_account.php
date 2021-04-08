@@ -1,15 +1,55 @@
-﻿<?php
+<?php
+session_start();
 include("../dbconnection.php");
-if(isset($_GET['delid']))
-{
-  $sql ="DELETE FROM account where id='$_GET[delid]'";
-  $qsql = mysqli_query($con,$sql);
-  if(mysqli_affected_rows($con) ==1 )
-  {
-    echo "<script>alert('Account deleted successfully...');</script>";
+
+$username = '';
+
+if(isset($_GET['username'])){
+  $username = $_GET['username'];
+  $get_user_sql = "SELECT * FROM account WHERE username='$username'";
+
+  $get_user_query = mysqli_query($con, $get_user_sql);
+
+  if($get_user_query){
+    $user = mysqli_fetch_assoc($get_user_query);
+    // print_r($user);
+  }
+}
+
+if(isset($_POST['submit'])) {
+  $name = $_POST['name'];
+  $new_username = $_POST['username'];
+  $password = $_POST['password'];
+  $email = $_POST['email'];
+  $mobile = $_POST['mobile'];
+  $address = $_POST['address'];
+  $state = $_POST['state'];
+  $city = $_POST['city'];
+  $country = $_POST['country'];
+  $branch = $_POST['branch'];
+  $pin = $_POST['pin'];
+  $dob = $_POST['dob'];
+  $gender = $_POST['gender'];
+  $account_type = $_POST['account_type'];
+  $account_number = $_POST['account_number'];
+  $open_date = $_POST['open_date'];
+  $status = $_POST['status'];
+
+  $update_user_sql = "UPDATE account SET account_name='$name', username='$new_username', password='$password', email='$email', mobile='$mobile', address='$address', state='$state', city='$city', country='$country', branch='$branch', pin='$pin', dob='$dob', gender='$gender', account_type='$account_number', account_number='$account_number', open_date='$open_date', status='$status' WHERE username='$new_username'";
+
+  $update_user_query = mysqli_query($con, $update_user_sql);
+
+  if($update_user_query){
+    header('Location: view_account.php');
+  }
+  else {
+    echo mysqli_error($con);
   }
 }
 ?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -416,7 +456,7 @@ if(isset($_GET['delid']))
           </a>
         </li>
 		
-		 <li class="">
+		 <li class="active">
           <a href="account.php">
             <i class="fa fa-user"></i> <span>Create Account</span>
             <span class="pull-right-container">
@@ -425,7 +465,7 @@ if(isset($_GET['delid']))
           </a>
         </li>
 		
-		 <li class="active">
+		 <li class="">
           <a href="view_account.php">
             <i class="fa fa-leaf"></i> <span>View Accounts</span>
             <span class="pull-right-container">
@@ -507,16 +547,16 @@ if(isset($_GET['delid']))
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
+    <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+       Create New Account
+        
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="breadcrumb-item active">Dashboard</li>
+        <li class="breadcrumb-item active">Beneficiaries</li>
       </ol>
     </section>
 
@@ -524,106 +564,178 @@ if(isset($_GET['delid']))
     <section class="content">
 		
 		
-		
       
 		
 		
 		<div class="row">
-			
-			
-			
-			<div class="col-lg-12 col-12">
-			<div class="box">
-				<div class="box-header with-border">
-				  <h4 class="box-title">Opened Accounts</h4>
-					
-				</div>
-				<div class="box-body">
-					<div class="table-responsive">
-						<table class="table table-bordered no-margin">
-						  <thead>					
-							<tr class="bg-pale-dark">
-							  <th>Image</th>
-							  <th>Account Name</th>
-							  <th>Accounnt Type</th>
-							  <th>Account Number</th>
-							  <th>Branch</th>
-							  <th>Username</th>
-							  <th>Password</th>
-							  <th>Sex</th>
-							  <th>Address</th>
-							  <th>Zip</th>
-                <th>City</th>
-                <th>State</th>
-                <th>Country</th>
-                <th>Mobile</th>
-                <th>Email</th>
-                <th>Reg Date</th>
-                <th>Balance</th>
-                <th>Edit</th>
-                <th>Delete</th>
-							</tr>
-						  </thead>
-						  <tbody>
-							   <?php
-                     $sql="SELECT * FROM account WHERE status!='Deleted'";
-        
-          
-                    $rsquery=mysqli_query($con,$sql);
-                    while($rs=mysqli_fetch_array($rsquery))
-                    {
+		  <div class="col-lg-12 col-12">
+		
+		
+		  <!-- vertical wizard -->
+      <div class="box box-solid bg-dark">
+        <div class="box-header with-border">
+          <h5 class="box-title">Complete the form below to create a new account.</h5>
+         
 
-
-                 ?>
-							<tr>
-							  
-							<td>
-                      <img src="upload/<?php echo $rs['image']; ?>" alt="no image" style="width:75px; height:75px;" />
-                      </td>
-                      <td><?php echo $rs['account_name']; ?></td>                      
-                      <td><?php echo $rs['account_type']; ?></td>
-                      <td><?php echo $rs['account_number']; ?></td>
-                      <td><?php echo $rs['branch']; ?></td>
-                      <td><?php echo $rs['username']; ?></td>
-                      <td><?php echo $rs['password']; ?></td>
-                      <td><?php echo $rs['gender']; ?></td>
-                      <td><?php echo $rs['address']; ?></td>
-                      <td><?php echo $rs['pin']; ?></td> 
-                      <td><?php echo $rs['city']; ?></td> 
-                      <td><?php echo $rs['state']; ?></td>
-                      <td><?php echo $rs['country']; ?></td> 
-                      <td><?php echo $rs['mobile']; ?></td>
-                      <td><?php echo $rs['email']; ?></td>
-                      <td><?php echo $rs['open_date']; ?></td>
-                      <td><?php echo $rs['Balance']; ?></td>
-                      
-            
-            
-                      <td><a href="update_account.php?username=<?php echo $rs["username"]; ?>"><button type="button" class="btn btn-warning">Edit</button></a></td>                    
-                      
-                      <td><a href="view_account.php?delid=<?php echo $rs["id"]; ?>"><button type="button" class="btn btn-danger">Delete</button></a></td>
-                    </tr>
-              
-                          </tbody>
-              
-              <?php
-          }
-          ?>
-						</table>
+         
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body wizard-content">
+			<form action="<?php echo $_SERVER['PHP_SELF']?>" method="POST" enctype="multipart/form-data">
+				<!-- Step 1 -->
+				
+				<section class="bg-hexagons-dark">
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="firstName1">Name :</label>
+								<input type="text" class="form-control" value="<?php echo $user['account_name']?>" id="firstName1" name="name"> </div>
+						</div>
+						<!-- <div class="col-md-6">
+							<div class="form-group">
+								<label for="lastName2">Last Name :</label>
+								<input type="text" class="form-control" id="lastName2" name="lastname"> </div>
+						</div> -->
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="firstName1">Username :</label>
+                <input readonly type="text" value="<?php echo $user['username']?>" class="form-control" id="firstName1" name="username">
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="lastName2">Password :</label>
+                <input type="text" class="form-control" value="<?php echo $user['password']?>" id="lastName2" name="password"> </div>
+            </div>
 					</div>
-				</div>
-				<!-- /.box-body -->
-			  </div>
-			  <!-- /.box -->
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="emailAddress2">Email Address :</label>
+								<input type="email" class="form-control" value="<?php echo $user['email']?>" id="emailAddress2" name="email"> </div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="phoneNumber2">Phone Number :</label>
+								<input type="tel" class="form-control" value="<?php echo $user['mobile']?>" id="phoneNumber2" name="mobile"> </div>
+						</div>
+					</div>
+					
+				</section>
+				
+				<!-- Step 2 -->
+				
+				<section class="bg-hexagons-dark">
+					<div class="row">
+					
+					<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">House Address :</label>
+								<input type="text" value="<?php echo $user['address']?>" class="form-control" id="jobTitle6" name="address"> </div>
+						</div>
+					
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">City :</label>
+								<input type="text" class="form-control" value="<?php echo $user['city']?>" id="jobTitle6" name="city"> </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">State :</label>
+								<input type="text" class="form-control" value="<?php echo $user['state']?>" id="jobTitle6" name="state"> </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Zip/Pin Code :</label>
+								<input type="text" class="form-control" value="<?php echo $user['pin']?>" id="jobTitle6" name="pin"> </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Country :</label>
+								<input type="text" class="form-control" value="<?php echo $user['country']?>" id="jobTitle6" name="country"> </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Gender :</label>
+								<input type="text" class="form-control" value="<?php echo $user['gender']?>" id="jobTitle6" name="gender"> </div>
+						</div>
+						<div class="col-md-6">
+              <div class="form-group">
+                <label for="jobTitle6">Date of Birth :</label>
+                <input type="date" class="form-control" value="<?php echo $user['dob']?>" id="jobTitle6" name="dob"> </div>
+            </div>
+            
+					
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Account Type :</label>
+								<input type="text" class="form-control" value="<?php echo $user['account_type']?>" id="jobTitle6" name="account_type"> </div>
+						</div>
 
-		  </div> 
-			
-			
-			
-			
-			
-			  
-		</div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="jobTitle6">Account Number :</label>
+                <input readonly type="text" class="form-control" value="<?php echo $user['account_number']?>" id="jobTitle6" name="account_number"> </div>
+            </div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Branch :</label>
+                <input type="text" class="form-control" value="<?php echo $user['branch']?>" id="jobTitle6" name="branch" />
+              </div>
+						</div>
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="jobTitle6">Open Date :</label>
+								<input readonly type="date" value="<?php echo $user['open_date']?>" class="form-control" id="jobTitle6" name="open_date"> </div>
+						</div>
+						
+						
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="location2">Status :</label>
+								<select class="custom-select form-control" id="location2" name="status">
+									<option value="active">Active</option>
+									<option value="inactive">Inactive</option>
+									
+								</select>
+							</div>
+						</div>
+						
+						
+						<!-- <div class="col-md-6">
+							<div class="form-group">
+								 <label >Select Passport Picture:</label>
+								<input type="file" name="img">
+							</div>
+						</div> -->
+						
+						
+						
+						
+						
+						
+					</div>
+					
+					<button type="submit" class="btn btn-primary btn-lg" name="submit">Add Beneficiary</button>
+					
+				</section>
+				<!-- Step 3 -->
+				
+				<!-- Step 4 -->
+				
+			</form>
+        </div>
+        <!-- /.box-body -->
+      </div>
+	   </div>
+	    </div>
 		
 		
 			
